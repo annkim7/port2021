@@ -1,8 +1,15 @@
-import React from 'react';
+import './App.css';
+import React, {useEffect, useState, useContext} from 'react';
 import $ from "jquery";
+import summaryData from './data.js';
 
-class App extends React.Component {
-    componentDidMount(){
+
+const Slider=()=>{
+
+    let [summary, summaryFunc] = useState(summaryData);
+    
+    useEffect(()=>{
+        
         $.fn.selfSlide = function(options){
             var defaults = {
                 slideWidth : 600,
@@ -32,7 +39,8 @@ class App extends React.Component {
             newSlideWidth = slideWidth;
         
             for(var i = 0; i < slideCount; i++){
-                slide.eq(i).addClass('item-' + i);
+                var slideIdx = i + 1;
+                slide.eq(i).addClass('item-' + slideIdx);
             };
         
         
@@ -91,7 +99,7 @@ class App extends React.Component {
             var timer = undefined;
         
             function autoSlide(){
-                if(timer === undefined){
+                if(timer == undefined){
                     timer = setInterval(function(){
                         moveSlide(currentIdx + 1);
                     }, 3000);
@@ -132,7 +140,52 @@ class App extends React.Component {
                 slideLayout(newSlideWidth, responsiveMargin);
                 setSlidePos();
             });
+
         }
-    }
-    
-  }
+    }, []);
+
+
+    return (
+        <div className="slide_wrapper mainSlide">
+            
+            <ul className="slides">
+                {
+                    summary.map((a,i)=>{
+                        return <Card summaryCard = {summary[i]} key={i} />
+                    })
+                }
+            </ul>
+            <p className="controls">
+                <span className="prev"></span>
+                <span className="next"></span>
+            </p>
+
+            
+        </div>
+        
+    );
+}
+
+function Card(props){
+    let contents = props.summaryCard.contents;
+
+    return(
+        <li>
+            <a className="pop-btn">           
+                <h3 className="title">{props.summaryCard.title}</h3>
+                <div className="content">
+                    {
+                        contents.map((a,i) =>{
+                            return(<span className="list" key={i}>{props.summaryCard.contents[i]}</span>)
+                        })
+                    }
+                    
+                </div>
+            </a> 
+        </li>
+    )
+}
+
+
+export default Slider;
+
