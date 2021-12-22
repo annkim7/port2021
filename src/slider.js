@@ -7,9 +7,20 @@ import summaryData from './data.js';
 const Slider=(props)=>{
 
     let [summary, summaryFunc] = useState(summaryData);
+    let sumCount = summary.length;
+
     let pop = props.pop;
     let setPop = props.setPop;
 
+    let num = props.num;
+    let setNum = props.setNum;
+
+    let Idx = (i) =>{
+        setNum(i);
+        console.log(i);
+    }
+
+    
     
     useEffect(()=>{
         
@@ -154,7 +165,10 @@ const Slider=(props)=>{
             <ul className="slides" >
                 {
                     summary.map((a,i)=>{
-                        return <Card summaryCard = {summary[i]} key={i} pop={pop} setPop={setPop}/>
+                        return <Card summaryCard = {summary[i]} key={i}
+                        pop={pop} setPop={setPop}  num={i} setNum={setNum}
+                        sumCount = {sumCount}
+                        />
                     })
                 }
             </ul>
@@ -178,10 +192,21 @@ function Card(props){
     let change = () =>{
         setPop(true);
     }
+    
+    let num = props.num;
+    let setNum = props.setNum;
+    let sumCount = props.sumCount;
+
+    let Idx = (i) =>{
+        console.log(i);
+        console.log(sumCount);
+        setNum(i);
+        
+    }
 
     return(
         <li>
-            <a className="pop-btn" onClick={()=>{change()}}>           
+            <a className="pop-btn" onClick={()=>{change(); Idx(num);}} >           
                 <h3 className="title">{props.summaryCard.title}</h3>
                 <div className="content">
                     {

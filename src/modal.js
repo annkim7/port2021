@@ -1,8 +1,10 @@
 import './App.css';
 import React, {useEffect, useState, useContext} from 'react';
-
+import popDataList from './popData.js';
 
 function Modal(props){
+    let [popData, popDataFunc] = useState(popDataList);
+
     let pop = props.pop;
     let setPop = props.setPop;
 
@@ -10,13 +12,16 @@ function Modal(props){
         setPop(false);
     }
 
+    let num = props.num;
+    let setNum = props.setNum;
+
     return(
         <div className="popup">
             <a className="close-btn" onClick={()=>{close()}}></a>
             <div className="pop-con">
                 <div className="pop-box">
-                    <div className="title">test</div>
-                    <div className="text">test</div>
+                    <div className="title">{popData[num].title}</div>
+                    <div className="text">{popData[num].contents}</div>
                 </div>
             </div>
         </div>

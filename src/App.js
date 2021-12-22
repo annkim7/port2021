@@ -10,6 +10,7 @@ import $ from "jquery";
 function App() {
     
     let [modal, modalFunc] = useState(false);
+    let [num, numFunc] = useState(0);
 
     useEffect(()=>{        
         $('.mainSlide').selfSlide();
@@ -20,13 +21,13 @@ function App() {
         <div className="container">
             <section className="section section01">
                 <div className="main-visual">
-                    <Slider pop={modal} setPop={modalFunc}/>
+                    <Slider pop={modal} setPop={modalFunc} num={num} setNum={numFunc}/>
                 </div>
             </section>
             
             {
                 modal === true
-                ? <Modal pop={modal} setPop={modalFunc}/>
+                ? <Modal pop={modal} setPop={modalFunc} num={num} setNum={numFunc}/>
                 :null
             }
         </div>
