@@ -6,7 +6,11 @@ import Slider from './slider.js';
 import Modal from './modal.js';
 import $ from "jquery";
 
+
 function App() {
+    
+    let [modal, modalFunc] = useState(false);
+
     useEffect(()=>{        
         $('.mainSlide').selfSlide();
     }, []);
@@ -16,9 +20,15 @@ function App() {
         <div className="container">
             <section className="section section01">
                 <div className="main-visual">
-                    <Slider />
+                    <Slider pop={modal} setPop={modalFunc}/>
                 </div>
             </section>
+            
+            {
+                modal === true
+                ? <Modal pop={modal} setPop={modalFunc}/>
+                :null
+            }
         </div>
     );
 
@@ -27,4 +37,8 @@ function App() {
 
 
 
+
 export default App;
+
+
+

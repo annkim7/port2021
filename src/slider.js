@@ -4,9 +4,12 @@ import $ from "jquery";
 import summaryData from './data.js';
 
 
-const Slider=()=>{
+const Slider=(props)=>{
 
     let [summary, summaryFunc] = useState(summaryData);
+    let pop = props.pop;
+    let setPop = props.setPop;
+
     
     useEffect(()=>{
         
@@ -148,10 +151,10 @@ const Slider=()=>{
     return (
         <div className="slide_wrapper mainSlide">
             
-            <ul className="slides">
+            <ul className="slides" >
                 {
                     summary.map((a,i)=>{
-                        return <Card summaryCard = {summary[i]} key={i} />
+                        return <Card summaryCard = {summary[i]} key={i} pop={pop} setPop={setPop}/>
                     })
                 }
             </ul>
@@ -169,9 +172,16 @@ const Slider=()=>{
 function Card(props){
     let contents = props.summaryCard.contents;
 
+    let pop = props.pop;
+    let setPop = props.setPop;
+
+    let change = () =>{
+        setPop(true);
+    }
+
     return(
         <li>
-            <a className="pop-btn">           
+            <a className="pop-btn" onClick={()=>{change()}}>           
                 <h3 className="title">{props.summaryCard.title}</h3>
                 <div className="content">
                     {
