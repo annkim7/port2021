@@ -1,5 +1,6 @@
 export default [
     {
+        "id" : "1",
         "title" : "Its game",
         "contents" : [
             "게시판 디자인, 사이트 전체 퍼블리싱",
@@ -8,7 +9,8 @@ export default [
             "hooper slider 사용"
         ]
     },
-    {
+    {   
+        "id" : "2",
         "title" : "STF 2021",
         "contents" : [
             "사이트 전체 디자인, 퍼블리싱",
@@ -16,7 +18,8 @@ export default [
             "css animation으로 메인 모션 창작하여 적용",
         ]
     },
-    {
+    {   
+        "id" : "3",
         "title" : "IKW 2021",
         "contents" : [
             "메인, 지자체, fez, 연사 페이지 퍼블리싱",
@@ -25,6 +28,7 @@ export default [
         ]
     },
     {
+        "id" : "4",
         "title" : "Jipremium x 4",
         "contents" : [
             "사이트 전체 퍼블리싱, 관리 및 유지보수",
@@ -33,6 +37,7 @@ export default [
         ]
     },
     {
+        "id" : "5",
         "title" : "Eco",
         "contents" : [
             "사이트 전체 퍼블리싱(온라인 전시관 제외)",
@@ -40,6 +45,7 @@ export default [
         ]
     },
     {
+        "id" : "6",
         "title" : "Inquebangkok",
         "contents" : [
             "온라인 전시 퍼블리싱",

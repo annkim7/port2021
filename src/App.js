@@ -14,6 +14,7 @@ function App() {
 
     useEffect(()=>{        
         $('.mainSlide').selfSlide();
+
     }, []);
 
 

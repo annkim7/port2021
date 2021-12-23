@@ -7,6 +7,8 @@ import summaryData from './data.js';
 const Slider=(props)=>{
 
     let [summary, summaryFunc] = useState(summaryData);
+    let [array, arrayFunc] = useState([...summary, ...summary, ...summary]);
+
     let sumCount = summary.length;
 
     let pop = props.pop;
@@ -59,10 +61,12 @@ const Slider=(props)=>{
         
         
             //복사본 생성하기 뒤에 5개 추가
-            slides.append(slide.clone().addClass('clone'));
+            // slides.append(slide.clone(true, true).addClass('clone'));
+            // slides.append(slide.clone(true, true));
         
             //복사본 생성하기 앞에 5개 추가
-            slides.prepend(slide.clone().addClass('clone'));
+            // slides.prepend(slide.clone(true, true).addClass('clone'));
+            // slides.prepend(slide.clone(true, true));
         
             //가로배열하기
             function slideLayout(sw, sm){
@@ -72,12 +76,15 @@ const Slider=(props)=>{
                 newSlides.each(function(idx){
                     $(this).css({left: movAmt*idx + 'px', width: sw + 'px'});
                 });
+
             }
             slideLayout(slideWidth, slideMargin);
-        
+            
+            var divSlide = slideCount/3;
+
             // 중앙배치하기
             function setSlidePos(){
-                var ulMoveAmt = -movAmt * slideCount + 'px';
+                var ulMoveAmt = -movAmt * divSlide + 'px';
                 slides.css({transform: 'translateX('+ ulMoveAmt + ')'});
             }
             setSlidePos();
@@ -91,20 +98,17 @@ const Slider=(props)=>{
                 moveSlide(currentIdx - 1);
         
             });
-        
+            
+
             // 슬라이드 이동 함수
             function moveSlide(num){
                 slides.stop().animate({left:movAmt * -num + 'px'}, 500, function(){
-                    if(currentIdx == slideCount || currentIdx == -slideCount){
+                    if(currentIdx == divSlide || currentIdx == -divSlide){
                         slides.css({left: '0px'});
                         currentIdx = 0;
                     }
                 });
                 currentIdx = num;
-        
-                //slide.eq(num).addClass('item-' + num);
-        
-                // console.log(currentIdx, slideCount);
             }
         
         
@@ -154,9 +158,12 @@ const Slider=(props)=>{
                 slideLayout(newSlideWidth, responsiveMargin);
                 setSlidePos();
             });
+            
 
         }
     }, []);
+
+    
 
 
     return (
@@ -164,8 +171,8 @@ const Slider=(props)=>{
             
             <ul className="slides" >
                 {
-                    summary.map((a,i)=>{
-                        return <Card summaryCard = {summary[i]} key={i}
+                    array.map((a,i)=>{
+                        return <Card summaryCard = {array[i]} key={i}
                         pop={pop} setPop={setPop}  num={i} setNum={setNum}
                         sumCount = {sumCount}
                         />
