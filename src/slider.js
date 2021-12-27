@@ -54,10 +54,10 @@ const Slider=(props)=>{
         
             newSlideWidth = slideWidth;
         
-            for(var i = 0; i < slideCount; i++){
-                var slideIdx = i + 1;
-                slide.eq(i).addClass('item-' + slideIdx);
-            };
+            // for(var i = 0; i < slideCount; i++){
+            //     var slideIdx = i + 1;
+            //     slide.eq(i).addClass('item-' + slideIdx);
+            // };
         
         
             //복사본 생성하기 뒤에 5개 추가
