@@ -67,7 +67,9 @@ section{
     justify-content: center;
     position: absolute; top:0; left:0; width:100%; height:100%; z-index: 0;  background: #F0F0F3;}
 
-.main-visual{position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index:1;}
+.main-visual{
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%); z-index:1;}
 .slide_wrapper{ position: relative;  width:1300px;  height:400px;  margin:0 auto;  z-index: 2;}
 .slides{ position: absolute; left:0; top:0; height: 400px; width:100%;}
 .slides.animated{ transition: 0.5s ease-out;}
@@ -134,7 +136,7 @@ box-shadow:  20px 20px 60px #cccccf, -20px -20px 60px #ffffff;  color:#606061;fo
     font-size: 1.05rem;
     font-weight:400;
     color:#444;
-    font-family: 'OTWelcomeRA';
+    font-family: $textFont;
     &::before{
         top: calc(50% - 0.125rem);
         left:0;
@@ -148,22 +150,29 @@ box-shadow:  20px 20px 60px #cccccf, -20px -20px 60px #ffffff;  color:#606061;fo
 .popup{position: fixed;top:0;left:0;right:0; bottom:0; width:100%; height:100%; z-index: 999; background-image: radial-gradient(circle farthest-corner at 43% 45%, #0193bf 4%, #10acd6 41%, #2cedf5 97%); }
 .close-btn{position: absolute; top:0; left:0; width:100%; height:100%;cursor: pointer;background:rgba( 255, 255, 255, 0.3 );}
 .pop-con{ overflow: hidden;  position: absolute; top: 50%; left: 50%;  transform: translate(-50%, -50%);  background: rgba( 255, 255, 255, 0.2 ); box-shadow: 0 8px 32px 0 rgba(86, 193, 223, 0.37 ); backdrop-filter: blur( 5px ); -webkit-backdrop-filter: blur( 5px ); border: 1px solid rgba( 255, 255, 255, 0.18 ); border-radius: 15px;}
-.pop-box{ overflow: auto;  width:1200px;height:500px;  padding: 2rem 2.6rem;}
+.pop-box{  width:1200px;height:500px;  padding: 2rem 2.6rem;}
 
-.pop-box::-webkit-scrollbar { width: 13px;}
-.pop-box::-webkit-scrollbar-thumb { background-color: rgba(79,76,245,0.3);}
-.pop-box::-webkit-scrollbar-track {background-color: rgba( 255, 255, 255, 0.3 );}
+
 
 .pop-con .pop-header{display:flex; padding-bottom:1.2rem;  align-items: center; justify-content: space-between; border-bottom:1px solid #fff;}
 .pop-con .title{font-size: 1.6rem; font-weight: 600; color:#fff; letter-spacing: -0.1rem; font-family: 'Oswald', sans-serif;}
 .pop-con .links{display:flex; font-size: 0.65rem;  font-weight: 400; color:#10acd6; }
-.pop-con .links a{padding:0.5rem 0.8rem; background:#fff; border-radius: 30px; color:#10acd6;}
-.pop-con .links a ~ a{margin-left:0.5rem;}
+.pop-con .links > a{padding:0.5rem 0.8rem; background:#fff; border-radius: 30px; color:#10acd6;}
+.pop-con .links > a ~ a{margin-left:0.5rem;}
+
+.pop-con .links .web-dropDown{overflow:hidden; position:absolute; top: 3.7rem; right: 2rem; }
+.pop-con .links .web-box{transform: translateY(0%);transition: all 0.2s linear;}
+.pop-con .links .web-dropDown a{padding: 0.6rem 1rem; background: rgba(255,255,255, 0.5); color:#2aa1c3; text-align: center;}
+.pop-con .links .web-dropDown a:hover{background: rgba(255,255,255, 1);}
+.pop-con .links a.page{position:relative;}
+// .pop-con .links a.page:hover + .web-dropDown .web-box{transform: translateY(0%);}
+.pop-con .links a.page:hover + .web-dropDown .web-box a:hover{background: rgba(255,255,255, 1);}
+
 .pop-con .detail{margin-top:1.3rem; }
 
 .pop-con .detail-box{display: flex;  }
 
-.pop-con .media{overflow:hidden;width: 50%; padding:2rem; border-radius:10px; background: rgba( 255, 255, 255, 0.5 ); display: flex; align-items: center; justify-content: center;
+.pop-con .media{overflow:hidden;width: 50%;  height: calc(500px - 8rem); padding:2rem; border-radius:10px; background: rgba( 255, 255, 255, 0.5 ); display: flex; align-items: center; justify-content: center;
     backdrop-filter: blur( 6.5px );
     -webkit-backdrop-filter: blur( 6.5px );
     border: 1px solid rgba( 255, 255, 255, 0.18 );}
@@ -191,8 +200,11 @@ box-shadow:  20px 20px 60px #cccccf, -20px -20px 60px #ffffff;  color:#606061;fo
     }
 }
 
-.pop-con .text{width: 50%; padding: 1.3rem 1rem 1.2rem 3rem; color:#fff; line-height: 1.4; font-family: $textFont; white-space: pre-line;word-break:break-all;}
+.pop-con .text{overflow: auto;  width: 50%; padding: 1.3rem 1rem 1.2rem 3rem; color:#fff; line-height: 1.4; font-family: $textFont; white-space: pre-line;word-break:break-all;}
 
+.pop-con .text::-webkit-scrollbar { width: 13px;}
+.pop-con .text::-webkit-scrollbar-thumb { background-color: rgba(79,76,245,0.3);}
+.pop-con .text::-webkit-scrollbar-track {background-color: rgba( 255, 255, 255, 0.3 );}
 
 /* M O T I O N */
 

@@ -6,6 +6,8 @@ function Modal(props){
     let [popData, popDataFunc] = useState(popDataList);
     let [popArray, popArrayFunc] = useState([...popData, ...popData, ...popData]);
 
+    let [dropDown, dropDownFunc] = useState(false);
+
     let pop = props.pop;
     let setPop = props.setPop;
 
@@ -16,6 +18,18 @@ function Modal(props){
     let num = props.num;
     let setNum = props.setNum;
 
+    let moveDown = () =>{
+        dropDownFunc(true);
+    }
+
+    let website = popArray[num].website;
+
+    let timer = () =>{
+        setTimeout(() => {
+            dropDownFunc(false);
+        }, 2000);
+    }
+
     return(
         <div className="popup">
             <a className="close-btn" onClick={()=>{close()}}></a>
@@ -24,8 +38,20 @@ function Modal(props){
                     <div className="pop-header">
                         <div className="title">{popArray[num].title}</div>
                         <div className="links">
-                            <a className="figma" target="_blank" href={"https://www.figma.com/file/hrFYpH3xrhVRA4SeSFdiCf/"+popArray[num].figma}>Figma</a>
-                            <a className="page" target="_blank" href={popArray[num].website}>Website</a>
+                            <a className="figma" target="_blank" href={"https://www.figma.com/file/"+popArray[num].figma}>Figma</a>
+                            {
+                                Array.isArray(popArray[num].website) === false
+                                ? <a className="page" target="_blank" href={popArray[num].website}>Website</a> 
+                                : <a className="page" target="_blank" href={popArray[num].website} onMouseEnter={() => {moveDown(); timer();}} >Website</a>
+                            }
+                            
+                            {
+                                dropDown === true
+                                ? <MoveDown dropDown={dropDown} setDropDown={dropDownFunc}
+                                    num={num} setNum={setNum} website={website}/>
+                                :null
+                            }
+                            
                         </div>
                     </div>
                     <div className="detail">
@@ -51,7 +77,7 @@ function Modal(props){
                             
                             
                         </div>
-                         
+
                     </div>
                 </div>
             </div>
@@ -60,5 +86,31 @@ function Modal(props){
 }
 
 
+function MoveDown(props) {
+
+    let dropDown = props.dropDown;
+    let setDropDown = props.setDropDown;
+
+    let num = props.num;
+    let setNum = props.setNum;
+
+    let moveLeave = () =>{
+        setDropDown(false);
+    }
+
+    let website = props.website;
+
+    return(
+        <div className="web-dropDown" onMouseLeave={() => {moveLeave()}} >
+            <div className="web-box" >
+                {
+                    website.map((a,i) =>{
+                        return(<a href={Object.values(website[i])} target="_blank">{Object.keys(website[i])}</a>)
+                    })
+                }
+            </div>
+        </div>
+    )
+}
 
 export default Modal;
