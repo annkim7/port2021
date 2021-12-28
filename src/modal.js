@@ -8,7 +8,6 @@ function Modal(props){
 
     let [dropDown, dropDownFunc] = useState(false);
 
-
     let pop = props.pop;
     let setPop = props.setPop;
 
