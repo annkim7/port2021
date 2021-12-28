@@ -7,7 +7,6 @@ import Modal from './modal.js';
 import Motion from './motion.js';
 import $ from "jquery";
 
-
 function App() {
     
     let [modal, modalFunc] = useState(false);
@@ -23,7 +22,7 @@ function App() {
         <div className="container">
             <section className="section section01">
                 <div className="main-visual">
-                    <Slider pop={modal} setPop={modalFunc} num={num} setNum={numFunc}/>
+                    <Slider pop={modal} setPop={modalFunc} num={num} setNum={numFunc} />
                 </div>
 
                 <Motion />
@@ -35,9 +34,8 @@ function App() {
                     <div class="edu-con">
                         <p>이 사이트에 사용된 기술을 정리해 보았습니다. 디자인과 퍼블리싱을 넘어 프론트엔드로 기술 확장을 도모하여 보다 나은 기술로 멋진 웹페이지를 만들어보는 것이 목표입니다. 현재에 안주하지 않고 꾸준하게 발전하기 위해 배움을 놓지 않고 있습니다.</p>
                         <div class="edu-button">
-                            <a class="github" traget="_blank" href="https://github.com/annkim7"></a>
-                            <a class="figma" traget="_blank" href="#"></a>
-                            <a class="notion" traget="_blank" href="https://www.notion.so/N-Kim-a242915d7ffa463596860036bf7db6d5"></a>
+                            <a class="github" traget="_blank" without rel="noreferrer" href="https://github.com/annkim7"></a>
+                            <a class="notion" traget="_blank" without rel="noreferrer" href="https://www.notion.so/N-Kim-a242915d7ffa463596860036bf7db6d5"></a>
                         </div>
                     </div>
                 </div>
@@ -45,17 +43,17 @@ function App() {
                     <div class="edu-box">
                         <div class="edu">Javascript</div>
                         <div class="edu">SVG</div>
-                        <div class="edu">Tweenmax</div>
+                        <div class="edu">GSAP</div>
                         <div class="edu">React</div>
-                        <div class="edu">getJSON</div>
-                        <div class="edu">Scss</div>
+                        <div class="edu">Redux</div>
+                        <div class="edu">SCSS</div>
                     </div>
                 </div>
             </section>
             
             {
                 modal === true
-                ? <Modal pop={modal} setPop={modalFunc} num={num} setNum={numFunc}/>
+                ? <Modal pop={modal} setPop={modalFunc} num={num} setNum={numFunc} />
                 :null
             }
         </div>

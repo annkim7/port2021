@@ -8,6 +8,7 @@ const Slider=(props)=>{
 
     let [summary, summaryFunc] = useState(summaryData);
     let [array, arrayFunc] = useState([...summary, ...summary, ...summary]);
+    
 
     let sumCount = summary.length;
 
@@ -19,10 +20,8 @@ const Slider=(props)=>{
 
     let Idx = (i) =>{
         setNum(i);
-        console.log(i);
+        // console.log(i);
     }
-
-    
     
     useEffect(()=>{
         
@@ -205,11 +204,12 @@ function Card(props){
     let sumCount = props.sumCount;
 
     let Idx = (i) =>{
-        console.log(i);
-        console.log(sumCount);
+        // console.log(i);
+        // console.log(sumCount);
         setNum(i);
         
     }
+
 
     return(
         <li>

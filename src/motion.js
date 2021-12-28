@@ -1,7 +1,8 @@
 import './App.css';
 import React, {useEffect, useState, useContext} from 'react';
 import $ from "jquery";
-import { Controls, PlayState, Timeline, Tween } from 'react-gsap';
+
+import gsap from 'gsap';
 
 const Motion=()=>{
 
@@ -54,9 +55,14 @@ const Motion=()=>{
                     }
                 }
         
-                mainSlide.style.setProperty("transform", "translate(-50%, -300%)");
+                // mainSlide.style.setProperty("transform", "translate(-50%, -300%)");
         
-                
+                gsap.to( mainSlide, 2.2, {
+                    transform: 'translate(-50%, -300%)',
+                    opacity: 0,
+                    delay : 0.5,
+                    ease: 'easeInOut'
+                });
                 
             }
         
@@ -66,9 +72,14 @@ const Motion=()=>{
                     pageChangeDelay();
                 }
         
-                mainSlide.style.setProperty("transform", "translate(-50%, -50%)");
+                // mainSlide.style.setProperty("transform", "translate(-50%, -50%)");
         
-                
+                gsap.to( mainSlide, 2.2, {
+                    transform: 'translate(-50%, -50%)',
+                    opacity: 1,
+                    delay : 0.5,
+                    ease: 'easeInOut'
+                });
             }
         
             function pageChangeDelay(){
@@ -79,7 +90,7 @@ const Motion=()=>{
                     ball[i].style.setProperty("transition-delay", time +"s");
                 }
                 
-                mainSlide.style.transition = "0.6s linear";
+                // mainSlide.style.transition = "0.6s linear";
             }
         
             function pageNumFun(){
