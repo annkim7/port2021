@@ -27,7 +27,12 @@ export default [
         "id" : "4",
         "title" : "Jipremium x 4",
         "figma" : "9YsUU36dLB61IrqhRzJiYK/Jipremium",
-        "website" : "https://jipremium.micehub-gov.com/",
+        "website" : [
+            {"jipremium" : "https://jipremium.micehub-gov.com/"},
+            {"vietbaby" : "https://vietbabyfair.micehub-gov.com/"},
+            {"viehealth" : "https://viethealth.micehub-gov.com/"},
+            {"vipremium" : "https://vipremium.micehub-gov.com/"},
+        ],
         "design" : "jip_02.png",
         "explain" : "jipremium, vietbaby, viehealth, vipremium의 네가지 사이트가 레이아웃이 거의 일치하고 구성도 같아서 함께 관리하고, 기능 추가 요청이 많아서 하나의 css를 통해서 관리해온 사이트이다.\nvietbaby의 참가사 페이지의 경우 script를 사용, for문으로 array안의 데이터를 td로 생성한 바 있다."
     },
