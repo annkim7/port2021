@@ -2,6 +2,9 @@ import './App.css';
 import React, {useEffect, useState, useContext} from 'react';
 import $ from "jquery";
 import summaryData from './data.js';
+// import { useMediaQuery } from "react-responsive";
+
+
 
 
 const Slider=(props)=>{
@@ -9,7 +12,6 @@ const Slider=(props)=>{
     let [summary, summaryFunc] = useState(summaryData);
     let [array, arrayFunc] = useState([...summary, ...summary, ...summary]);
     
-
     let sumCount = summary.length;
 
     let pop = props.pop;
@@ -22,7 +24,10 @@ const Slider=(props)=>{
         setNum(i);
         // console.log(i);
     }
+
     
+    
+
     useEffect(()=>{
         
         $.fn.selfSlide = function(options){
@@ -139,9 +144,10 @@ const Slider=(props)=>{
             });
         
             //반응형 슬라이드
+            
             $(window).resize(function(){
                 console.log($(this).width());
-                if($(this).width() < 700){
+                if($(this).width() < 1499){
                     responsiveMargin = 20;
                     newSlideWidth = (slides.width() - responsiveMargin*(maxSlides - 1))/maxSlides;
                     
@@ -149,21 +155,29 @@ const Slider=(props)=>{
                     newSlideWidth = slideWidth;
                     responsiveMargin = slideMargin;
                 }
-        
-                if($(this).width() <= 500){
-                    newSlideWidth = slides.width();
-                    responsiveMargin = 0;
+                
+                if($(this).width() <= 700){
+                    newSlideWidth = window.innerWidth;
+                    
+
+                    console.log(newSlideWidth);
                 }
+
+                // if($(this).width() <= 700){
+                //     newSlideWidth = slides.width();
+                //     responsiveMargin = 0;
+
+                //     console.log(newSlideWidth);
+                // }
                 slideLayout(newSlideWidth, responsiveMargin);
                 setSlidePos();
             });
             
-
+            
         }
     }, []);
 
-    
-
+   
 
     return (
         <div className="slide_wrapper mainSlide">
@@ -209,7 +223,7 @@ function Card(props){
         setNum(i);
         
     }
-
+    
 
     return(
         <li>

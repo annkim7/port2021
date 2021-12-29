@@ -5,6 +5,7 @@ import './style.scss';
 import Slider from './slider.js';
 import Modal from './modal.js';
 import Motion from './motion.js';
+// import ResizeComponent from './test.js';
 import $ from "jquery";
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
                 <Motion />
             </section>
 
-            <section class="section section02">
+            <section class="section section02" style={{zIndex : -1}}>
                 <div class="left-side">
                     <h3 class="title">Education</h3>
                     <div class="edu-con">
