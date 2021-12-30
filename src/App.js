@@ -5,7 +5,6 @@ import './style.scss';
 import Slider from './slider.js';
 import Modal from './modal.js';
 import Motion from './motion.js';
-// import ResizeComponent from './test.js';
 import $ from "jquery";
 
 function App() {
@@ -43,10 +42,10 @@ function App() {
                 <div class="right-side">
                     <div class="edu-box">
                         <div class="edu">Javascript</div>
-                        <div class="edu">SVG</div>
+                        <div class="edu light">SVG</div>
                         <div class="edu">GSAP</div>
                         <div class="edu">React</div>
-                        <div class="edu">Redux</div>
+                        <div class="edu light">Redux</div>
                         <div class="edu">SCSS</div>
                     </div>
                 </div>
