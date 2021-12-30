@@ -1,11 +1,8 @@
 import './App.css';
-import React, {useEffect, useState, useContext} from 'react';
+import React, { useCallback, useState, useEffect, useRef } from "react";
 import $ from "jquery";
 import summaryData from './data.js';
 // import { useMediaQuery } from "react-responsive";
-
-
-
 
 const Slider=(props)=>{
 
@@ -25,16 +22,13 @@ const Slider=(props)=>{
         // console.log(i);
     }
 
-    
-    
-
     useEffect(()=>{
         
         $.fn.selfSlide = function(options){
             var defaults = {
                 slideWidth : 600,
                 slideMargin : 100,
-                maxSlides : 3,
+                maxSlides : 1,
                 responsiveMargin : 20
             };
         
@@ -143,10 +137,28 @@ const Slider=(props)=>{
                 autoSlide();
             });
         
+            // mouse swipe
+            var mstartX = 0, mendX = 0,mstartY = 0, mendY = 0;
+
+            $(this).on('mousedown',function(event){
+                mstartX = event.pageX;
+            });
+            $(this).on('mouseup',function(event){
+                mendX=event.pageX;
+
+                console.log(mstartX-mendX);
+                if(mstartX-mendX>100){
+                    moveSlide(currentIdx + 1);     
+                }else{
+                    moveSlide(currentIdx - 1);
+                }
+            });
+
             //반응형 슬라이드
-            
             $(window).resize(function(){
-                console.log($(this).width());
+                // console.log($(this).width());
+                
+
                 if($(this).width() < 1499){
                     responsiveMargin = 20;
                     newSlideWidth = (slides.width() - responsiveMargin*(maxSlides - 1))/maxSlides;
@@ -157,32 +169,43 @@ const Slider=(props)=>{
                 }
                 
                 if($(this).width() <= 700){
-                    newSlideWidth = window.innerWidth;
-                    
+                    // newSlideWidth = slides.width();
+                    // responsiveMargin = 0;
 
-                    console.log(newSlideWidth);
                 }
 
-                // if($(this).width() <= 700){
-                //     newSlideWidth = slides.width();
-                //     responsiveMargin = 0;
-
-                //     console.log(newSlideWidth);
-                // }
                 slideLayout(newSlideWidth, responsiveMargin);
                 setSlidePos();
             });
             
-            
+            //touch swipe
+            var startX,startY, endX,endY;
+
+            $(this).on('touchstart',function(event){
+                startX = event.originalEvent.changedTouches[0].screenX;
+                startY = event.originalEvent.changedTouches[0].screenY;
+            });
+
+            $(this).on('touchend',function(event){
+                endX=event.originalEvent.changedTouches[0].screenX;
+                endY=event.originalEvent.changedTouches[0].screenY;
+
+                // if(startY-endY>500){// }
+                if(startX-endX>newSlideWidth){
+                    moveSlide(currentIdx + 1);     
+                }else{
+                    moveSlide(currentIdx - 1);
+                }
+            });
+
         }
     }, []);
 
-   
-
+    
     return (
         <div className="slide_wrapper mainSlide">
             
-            <ul className="slides" >
+            <ul className="slides">
                 {
                     array.map((a,i)=>{
                         return <Card summaryCard = {array[i]} key={i}
