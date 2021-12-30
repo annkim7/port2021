@@ -283,24 +283,19 @@ border-radius: 50%;  opacity: 0.4; -webkit-filter: blur(15px); filter: blur(15px
 .edu-box .edu:nth-of-type(2n+1){margin-left:0;}
 
 .edu-box .edu{display: flex; align-items: center; justify-content: center; font-size: 30px; color: #649BF6; font-weight: 600;}
-
+.edu.light{color:#98befc;}
 
 /*====== R E S P O N S I V E ========*/
 
 
 @media only screen and (max-width: 1499px){
     .container{ width:100%; padding: 0 20px; box-sizing: border-box; }
-    .slide_wrapper{ width:600px; }
-    
+    .slide_wrapper{ width:38rem; height:25rem; }
 
-    .slides li .title{font-size: 1.5vw;}
-    .list{font-size: 1.2vw;}
-
-
-    .ball1{width:22vw; height:21.5vw; margin-top: 3vw; margin-left: -11vw;}
-    .ball2{width:16.5vw; height:16.5vw; margin-top: -24.5vw; margin-left: -32vw;}
-    .ball3{width: 16.5vw; height:16.5vw; margin-top:15vw; margin-left: -42vw;}
-    .ball4{width:10.3vw; height:10vw; margin-top:-1vw; margin-left:-43vw;}
+    .ball1{width:22vw; height:21.5vw; margin-top: 3vw; margin-left: 5vw;}
+    .ball2{width:16.5vw; height:16.5vw; margin-top: -29.5vw; margin-left: -32vw;}
+    .ball3{width: 16.5vw; height:16.5vw; margin-top:15vw; margin-left: -24vw;}
+    .ball4{width:10.3vw; height:10vw; margin-top:3vw; margin-left:-43vw;}
     .ball5{width:14vw; height:14vw; margin-top: -24vw; margin-left: 22vw;}
     .ball6{width: 7vw; height: 7vw; margin-top:-31vw; margin-left: 3vw;}
     .ball7{width: 4vw; height: 4vw; margin-top: -18vw; margin-left: 12vw;}
@@ -325,14 +320,25 @@ border-radius: 50%;  opacity: 0.4; -webkit-filter: blur(15px); filter: blur(15px
     .edu-box .edu:nth-of-type(3n+1) { margin-left: 0;}
 }
 
+@media only screen and (max-width: 1199px){
+    .ball1{margin-top:11vw;}
+    .ball2{margin-top: -33.5vw; margin-left: -15vw; }
+    .ball3{margin-top: 18vw;}
+    .ball6{margin-top: -28vw;}
+}
+
 @media only screen and (max-width: 700px){
-    .main-visual{ width:100%;  height:50vw;}
+    .main-visual{ width:84vw;  height:50vw;}
     .slide_wrapper{ width: 100%; height:100%; }
     .slides,
     .slides li{height:100%;}
+    .controls{display:none;}
+
+    .slides li .title{font-size: 2.8vw;}
+    .list{font-size: 2.6vw;}
 
     .pop-btn{padding:7vw;}
-    .pop-btn::before{height:22vw;}
+    .pop-btn::before{height:37vw;}
 
     .pop-box{height:65vw;}
 
