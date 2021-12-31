@@ -340,20 +340,23 @@ border-radius: 50%;  opacity: 0.4; -webkit-filter: blur(15px); filter: blur(15px
     .pop-btn{padding:7vw;}
     .pop-btn::before{height:37vw;}
 
-    .pop-box{height:65vw;}
+    .pop-box{height:100vw;padding: 6vw;}
 
-    .pop-con .pop-header{flex-direction: column;padding-bottom: 1.3vw;}
-    .pop-con .title {font-size: 3vw;}
-    .pop-con .links{margin-top:1.4vw;}
+    .pop-con .pop-header{flex-direction: column;padding-bottom: 3.5vw;}
+    .pop-con .title {font-size: 6vw;}
+    .pop-con .links{margin-top:4vw;}
+    .pop-con .links > a {padding: 1.3vw 4.3vw; font-size: 2.3vw;}
 
+    .pop-con .detail{margin-top:4vw;}
     .pop-con .detail-box{ flex-flow: row wrap;}
     .pop-con .media,
     .pop-con .text{width:100%;}
-    .pop-con .media{overflow:auto;padding:2vw;}
+    .pop-con .media{padding:2vw; height: 45vw;}
+    .pop-con .text{overflow:auto; height: 13vw; margin-top: 3.3vw; padding: 0 1vw 0;font-size: 2.5vw;}
 
-    .pop-con .media::-webkit-scrollbar { width: 13px;}
-    .pop-con .media::-webkit-scrollbar-thumb { background-color: rgba(79,76,245,0.3);}
-    .pop-con .media::-webkit-scrollbar-track {background-color: rgba( 255, 255, 255, 0.3 );}
+    .pop-con .text::-webkit-scrollbar { width: 13px;}
+    .pop-con .text::-webkit-scrollbar-thumb {background-color: rgba( 255, 255, 255, 0.6 );}
+    .pop-con .text::-webkit-scrollbar-track {background-color: rgba( 255, 255, 255, 0.3 );}
 
 
     .section02 .left-side{width:100%;}

@@ -26,6 +26,7 @@ function App() {
                 </div>
 
                 <Motion />
+
             </section>
 
             <section class="section section02" style={{zIndex : -1}}>
@@ -42,11 +43,11 @@ function App() {
                 <div class="right-side">
                     <div class="edu-box">
                         <div class="edu">Javascript</div>
-                        <div class="edu light">SVG</div>
+                        <div class="edu">JQuery</div>
                         <div class="edu">GSAP</div>
                         <div class="edu">React</div>
-                        <div class="edu light">Redux</div>
                         <div class="edu">SCSS</div>
+                        <div class="edu">Flex</div>
                     </div>
                 </div>
             </section>

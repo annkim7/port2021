@@ -2,7 +2,6 @@ import './App.css';
 import React, { useCallback, useState, useEffect, useRef } from "react";
 import $ from "jquery";
 import summaryData from './data.js';
-// import { useMediaQuery } from "react-responsive";
 
 const Slider=(props)=>{
 
@@ -118,7 +117,7 @@ const Slider=(props)=>{
                 if(timer == undefined){
                     timer = setInterval(function(){
                         moveSlide(currentIdx + 1);
-                    }, 3000);
+                    }, 5000);
                 }
             }
         
@@ -138,20 +137,31 @@ const Slider=(props)=>{
             });
         
             // mouse swipe
-            var mstartX = 0, mendX = 0,mstartY = 0, mendY = 0;
+            var mstartX = 0, mendX = 0, mstartY = 0, mendY = 0;
 
             $(this).on('mousedown',function(event){
                 mstartX = event.pageX;
+
             });
             $(this).on('mouseup',function(event){
                 mendX=event.pageX;
 
                 console.log(mstartX-mendX);
-                if(mstartX-mendX>100){
-                    moveSlide(currentIdx + 1);     
+                var chkNum = mstartX - mendX;
+                var chkNumAbs = Math.abs(chkNum);
+
+                if(chkNumAbs > 600){
+                    if(chkNum < 0){
+                        moveSlide(currentIdx - 1);
+                        
+                    }else{
+                        moveSlide(currentIdx + 1);   
+                    }
+                      
                 }else{
-                    moveSlide(currentIdx - 1);
+
                 }
+                
             });
 
             //반응형 슬라이드
@@ -190,11 +200,15 @@ const Slider=(props)=>{
                 endX=event.originalEvent.changedTouches[0].screenX;
                 endY=event.originalEvent.changedTouches[0].screenY;
 
-                // if(startY-endY>500){// }
-                if(startX-endX>newSlideWidth){
-                    moveSlide(currentIdx + 1);     
-                }else{
-                    moveSlide(currentIdx - 1);
+                var moNum = startX - endX;
+                var moNumAbs = Math.abs(moNum);
+
+                if(moNumAbs > 100){
+                    if(moNum < 0){
+                        moveSlide(currentIdx - 1);
+                    }else{
+                        moveSlide(currentIdx + 1); 
+                    }
                 }
             });
 

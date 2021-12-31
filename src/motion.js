@@ -1,6 +1,6 @@
 import './App.css';
 import React, {useEffect, useState, useContext} from 'react';
-import $ from "jquery";
+// import $ from "jquery";
 
 import gsap from 'gsap';
 
@@ -17,8 +17,8 @@ const Motion=()=>{
             var ball = document.querySelectorAll(".ball");
             var ballNum = ball.length;
         
-            $(window).bind('wheel', function(event){
-                if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
+            window.onmousewheel = function(event){
+                if (event.wheelDelta > 0 || event.detail < 0) {
                     // scroll up
                     if(pageNum > 1){
                         pageNum --;
@@ -37,10 +37,56 @@ const Motion=()=>{
                     pageChangeFunc();
                 }
         
-                console.log(pageNum);
+                // console.log(pageNum);
         
-            });
-        
+            }
+            
+            window.addEventListener("touchstart", touchFunc, false);
+            window.addEventListener("touchend", touchFunc, false);
+
+            var start_Y = 0;
+            var end_Y = 0;
+
+            function touchFunc(evt){
+
+                var type = null;
+                var touch = null;
+
+                switch(evt.type){
+                    case "touchstart":
+                        type = "mousedown";
+                        touch = evt.changedTouches[0];
+                        start_Y = touch.clientY;
+                        end_Y = 0;
+                    break;
+
+                    case "touchend":
+                        type = "mouseup";
+                        touch = evt.changedTouches[0];
+                        end_Y = touch.clientY;
+                        var chkNum = start_Y - end_Y;
+                        var chkNumAbs = Math.abs(chkNum);
+
+                        if(chkNumAbs > 100){
+                            if(chkNum < 0){
+                                if(pageNum > 1){
+                                    pageNum --;
+                                }
+
+                                pageNumFun();
+                                pageChangeReset();
+                            }else{
+                                if(pageNum < totalNum){
+                                    pageNum ++;
+                                }
+
+                                pageNumFun();
+                                pageChangeFunc();
+                            }
+                        }
+                }
+            }
+
             pageChangeReset();
             pageNumFun();
         
