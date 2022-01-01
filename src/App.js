@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import './style.scss';
@@ -12,21 +12,31 @@ function App() {
     let [modal, modalFunc] = useState(false);
     let [num, numFunc] = useState(0);
 
+    useEffect(() => {
+        if(modal === true){
+            document.getElementById('stopWheel').addEventListener('wheel', event => {
+                event.preventDefault();
+                event.stopPropagation();
+
+                console.log(event, event.defaultPrevented);
+            });
+        }
+        
+    }, [modal]);
+
     useEffect(()=>{        
         $('.mainSlide').selfSlide();
-
     }, []);
 
 
     return (
-        <div className="container">
+        <div className="container" id="stopWheel">
             <section className="section section01">
                 <div className="main-visual">
                     <Slider pop={modal} setPop={modalFunc} num={num} setNum={numFunc} />
                 </div>
 
-                <Motion />
-
+                <Motion/>
             </section>
 
             <section class="section section02" style={{zIndex : -1}}>

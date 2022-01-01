@@ -62,6 +62,8 @@ function Modal(props){
 
     const FadeIn = useFadeIn(0.8, 1.3);
 
+
+
     return(
         <div className="popup" >
             <a className="close-btn" onClick={()=>{close()}} {...SlideIn}></a>
