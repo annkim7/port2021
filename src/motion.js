@@ -4,11 +4,12 @@ import React, {useEffect, useState, useContext} from 'react';
 
 import gsap from 'gsap';
 
-const Motion=()=>{
+
+
+const Motion=(props)=>{
 
 
     useEffect(()=>{
-    
         window.onload = function(){
             var section = document.querySelectorAll(".section");
             var pageNum = 1;
@@ -16,8 +17,11 @@ const Motion=()=>{
             var mainSlide = document.querySelector(".main-visual");
             var ball = document.querySelectorAll(".ball");
             var ballNum = ball.length;
-        
-            window.onmousewheel = function(event){
+            
+            window.addEventListener("wheel", nextPageFunc);
+            
+
+            function nextPageFunc (event){
                 if (event.wheelDelta > 0 || event.detail < 0) {
                     // scroll up
                     if(pageNum > 1){
@@ -37,7 +41,6 @@ const Motion=()=>{
                     pageChangeFunc();
                 }
         
-                // console.log(pageNum);
         
             }
             
@@ -101,8 +104,6 @@ const Motion=()=>{
                     }
                 }
         
-                // mainSlide.style.setProperty("transform", "translate(-50%, -300%)");
-        
                 gsap.to( mainSlide, 2.2, {
                     transform: 'translate(-50%, -300%)',
                     opacity: 0,
@@ -117,9 +118,7 @@ const Motion=()=>{
                     ball[i].style.left = "50%";
                     pageChangeDelay();
                 }
-        
-                // mainSlide.style.setProperty("transform", "translate(-50%, -50%)");
-        
+                
                 gsap.to( mainSlide, 2.2, {
                     transform: 'translate(-50%, -50%)',
                     opacity: 1,
@@ -136,7 +135,6 @@ const Motion=()=>{
                     ball[i].style.setProperty("transition-delay", time +"s");
                 }
                 
-                // mainSlide.style.transition = "0.6s linear";
             }
         
             function pageNumFun(){
@@ -150,8 +148,10 @@ const Motion=()=>{
         
             }
         }
-    }, []);
 
+    }, []);
+    
+    
 
     return (
         <div className="ball-wrap">
