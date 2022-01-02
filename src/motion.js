@@ -18,7 +18,9 @@ const Motion=(props)=>{
             var ball = document.querySelectorAll(".ball");
             var ballNum = ball.length;
             
-            window.addEventListener("wheel", nextPageFunc);
+            var move = document.getElementById('stopWheel');
+
+            move.addEventListener("wheel", nextPageFunc);
             
 
             function nextPageFunc (event){
@@ -44,8 +46,8 @@ const Motion=(props)=>{
         
             }
             
-            window.addEventListener("touchstart", touchFunc, false);
-            window.addEventListener("touchend", touchFunc, false);
+            move.addEventListener("touchstart", touchFunc, false);
+            move.addEventListener("touchend", touchFunc, false);
 
             var start_Y = 0;
             var end_Y = 0;
